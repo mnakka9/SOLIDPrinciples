@@ -23,11 +23,10 @@ namespace SOLIDPrinciples
             foreach(var employee in employeeList)
             {
                 employee.GetUserDetails();
+                // Throws error for contractual employee
             }
         }
     }
-
-    
 
     public abstract class Employee
     {
@@ -58,6 +57,39 @@ namespace SOLIDPrinciples
         public override void GetUserDetails()
         {
             throw new NotSupportedException("Contractual users data will not be stored in database");
+        }
+    }
+
+
+    /*  ++++++++++++++++++++++ Here is fix ++++++++++++++++++++++++++++++*/
+    public interface EmployeeLSV
+    {
+        void GetEmployeeDetails();
+    }
+
+    interface ProjectLSV
+    {
+        void GetProjectDetails();
+    }
+
+    public class PermEmployee : EmployeeLSV, ProjectLSV
+    {
+        public void GetEmployeeDetails()
+        {
+            //do work
+        }
+
+        public void GetProjectDetails()
+        {
+
+        }
+    }
+
+    public class ContractEmpl : ProjectLSV
+    {
+        public void GetProjectDetails()
+        {
+
         }
     }
 }

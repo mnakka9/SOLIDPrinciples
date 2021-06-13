@@ -6,17 +6,25 @@ using System.Threading.Tasks;
 
 namespace SOLIDPrinciples
 {
-    class DIP
+    public class DIP
     {
         /*
-         High level modules should not depend on low level mdoules. 
+         High level modules should not depend on low level modules.
          Both high level and low level modules should depend on
          abstractions
 
-         Abstraction should not be dependent on details. 
+         Abstraction should not be dependent on details.
          Details should be depend on abstractions.
-         
+
          */
+
+        public void Main()
+        {
+            Console.WriteLine("DIP:");
+            var notifier = new SMSNotifier();
+            var notification = new Notification(notifier);
+            notification.Notify();
+        }
     }
 
     public class Email
@@ -51,6 +59,7 @@ namespace SOLIDPrinciples
         public void Send()
         {
             // send email
+            Console.WriteLine("Email sent");
         }
     }
 
@@ -59,6 +68,7 @@ namespace SOLIDPrinciples
         public void Send()
         {
             // send sms
+            Console.WriteLine("SMS sent");
         }
     }
 

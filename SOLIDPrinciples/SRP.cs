@@ -7,18 +7,11 @@ using System.Threading.Tasks;
 namespace SOLIDPrinciples
 {
     /*
-    
+
         A Class should have single responsibility and should be changed only
         for single reason.
-    
-     */
-    public class SRP
-    {
-        public void RegisterUser(User user)
-        {
 
-        }
-    }
+     */
 
     public class User
     {
@@ -27,7 +20,7 @@ namespace SOLIDPrinciples
         public string Email { get; set; }
     }
 
-    public class UserReposirtoryNSRP
+    public class NoSRP
     {
         public bool Add(User user)
         {
@@ -42,7 +35,7 @@ namespace SOLIDPrinciples
     }
 
 
-    public class UserReposirtorySRP
+    public class UserSRP
     {
         public bool Add(User user)
         {
@@ -50,8 +43,13 @@ namespace SOLIDPrinciples
             return true;
         }
 
-       
     }
 
-
+    public class ReportSRP
+    {
+        public void GenerateReport(User user)
+        {
+            //generate report
+        }
+    }
 }
